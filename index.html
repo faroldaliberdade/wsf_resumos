@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Episódios</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
+        h1 { color: #333; text-align: center; }
+        .lista-eps { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; padding: 0; list-style: none; }
+        .ep-link { display: block; background: #fff; padding: 12px; text-align: center; text-decoration: none; color: #333; border: 1px solid #ddd; border-radius: 6px; font-weight: bold; transition: all 0.2s ease; }
+        .ep-link:hover { background: #24292e; color: white; border-color: #24292e; }
+    </style>
+</head>
+<body>
+
+    <h1>Lista de Episódios</h1>
+    <ul id="grade-episodios" class="lista-eps"></ul>
+
+    <script>
+        const container = document.getElementById('grade-episodios');
+
+        // Loop que testa os episódios do 1 ao 1000
+        for (let i = 1; i <= 1000; i++) {
+            // Formata o número com 3 dígitos (ex: 1 vira 001)
+            const numFormata = String(i).padStart(3, '0');
+            const nomeArquivo = `wsf${numFormata}.html`;
+
+            // Faz uma requisição rápida para checar se o arquivo existe no GitHub Pages
+            fetch(nomeArquivo, { method: 'HEAD' })
+                .then(response => {
+                    // Se o arquivo existir (status 200), cria o botão na tela
+                    if (response.ok) {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<a class="ep-link" href="${nomeArquivo}">Episódio ${numFormata}</a>`;
+                        container.appendChild(li);
+                    }
+                })
+                .catch(() => { /* Ignora erros de arquivos que não existem */ });
+        }
+    </script>
+
+</body>
+</html>
