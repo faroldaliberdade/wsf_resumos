@@ -1,51 +1,349 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEINTRAUB SEM FILTRO - RESUMOS</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
-        h1 { color: #333; text-align: center; }
-        .lista-eps { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; padding: 0; list-style: none; }
-        .ep-link { display: block; background: #fff; padding: 12px; text-align: center; text-decoration: none; color: #333; border: 1px solid #ddd; border-radius: 6px; font-weight: bold; transition: all 0.2s ease; }
-        .ep-link:hover { background: #24292e; color: white; border-color: #24292e; }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4efe5">
+    <meta name="description" content="Resumos temáticos das lives de Weintraub sem Filtro, Raiz Cristã e programas especiais.">
+    <title>Resumos | WSF, Raiz Cristã e Especiais</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script defer src="assets/index.js"></script>
 </head>
 <body>
+    <a class="skip-link" href="#acervo">Pular para o acervo</a>
 
-    <h1>WEINTRAUB SEM FILTRO - RESUMOS</h1>
-    <ul id="grade-episodios" class="lista-eps"></ul>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Resumos — início">
+            <span class="brand-mark">WSF</span>
+            <span class="brand-name">Resumos</span>
+        </a>
+        <div class="top-links">
+            <a href="#wsf">WSF</a>
+            <a href="#rc">Raiz Cristã</a>
+            <a href="#especiais">Especiais</a>
+        </div>
+    </header>
 
-    <script>
-        const container = document.getElementById('grade-episodios');
+    <main>
+        <section class="hero" aria-labelledby="hero-title">
+            <p class="eyebrow">Acervo editorial</p>
+            <h1 id="hero-title">As lives,<br><em>organizadas.</em></h1>
+            <p class="lede">Resumos temáticos com marcas de tempo para conferir cada passagem no vídeo original. Um arquivo para consultar, revisar e acompanhar os programas.</p>
+            <dl class="stats">
+                <div><dt>Total</dt><dd data-stat="total">32</dd></div>
+                <div><dt>WSF</dt><dd data-stat="wsf">30</dd></div>
+                <div><dt>Raiz Cristã</dt><dd data-stat="rc">1</dd></div>
+                <div><dt>Especiais</dt><dd data-stat="especiais">1</dd></div>
+            </dl>
+        </section>
 
-        // Loop que testa os episódios do 1 ao 1000
-        for (let i = 1; i <= 1000; i++) {
-            // Formata o número com 3 dígitos (ex: 1 vira 001)
-            const numFormata = String(i).padStart(3, '0');
-            const nomeArquivo = `wsf${numFormata}.html`;
+        <section class="catalog" id="acervo" aria-labelledby="acervo-title">
+            <div class="catalog-head">
+                <div>
+                    <p class="eyebrow">Navegue</p>
+                    <h2 id="acervo-title">Acervo completo</h2>
+                </div>
+                <div class="search-wrap">
+                    <label for="busca">Buscar no acervo</label>
+                    <input id="busca" type="search" placeholder="Episódio, tema ou palavra-chave" autocomplete="off">
+                    <button type="button" class="clear" id="limpar" hidden>Limpar</button>
+                </div>
+            </div>
 
-            // Faz uma requisição rápida para checar se o arquivo existe no GitHub Pages
-            fetch(nomeArquivo, { method: 'HEAD' })
-                .then(response => {
-                    // Se o arquivo existir (status 200), cria o botão na tela
-                    if (response.ok) {
-                        const li = document.createElement('li');
-                        li.innerHTML = `<a class="ep-link" href="${nomeArquivo}">Episódio ${numFormata}</a>`;
-                        container.appendChild(li);
-                    }
-                })
-                .catch(() => { /* Ignora erros de arquivos que não existem */ });
-        }
-    </script>
+            <div class="filters" role="group" aria-label="Filtrar por programa">
+                <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">Todos</button>
+                <button type="button" class="filter" data-filter="wsf" aria-pressed="false">Weintraub sem Filtro</button>
+                <button type="button" class="filter" data-filter="rc" aria-pressed="false">Raiz Cristã</button>
+                <button type="button" class="filter" data-filter="especiais" aria-pressed="false">Especiais</button>
+            </div>
 
-    <nav id="resumos-novos" aria-label="Novos resumos">
-        <h2>Novos resumos</h2>
+            <p class="result" id="resultado" role="status" aria-live="polite">Mostrando 32 resumos.</p>
+
+            <nav id="resumos-novos" aria-label="Novos resumos">
+    <section class="catalog-section" id="wsf" data-category="wsf">
+        <p class="section-count"><span data-count="wsf">30 resumos</span></p>
+        <h3>Weintraub sem Filtro</h3>
+        <ul>
+            <li class="summary-card" data-search="wsf #001 weintraub sem filtro - #1 cenário econômico atual e estratégias de proteção ao cidadão brasileiro">
+                <a class="card-link" href="wsf/wsf001.html">
+                    <span class="card-kicker">WSF #001</span>
+                    <span class="card-title">WEINTRAUB SEM FILTRO - #1</span>
+                    <span class="card-topic">Cenário Econômico Atual e Estratégias de Proteção ao Cidadão Brasileiro</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #125 crise mundial: por que os bancos estão quebrando? wsf #125 análise da crise financeira global e implicações políticas no brasil">
+                <a class="card-link" href="wsf/wsf125.html">
+                    <span class="card-kicker">WSF #125</span>
+                    <span class="card-title">CRISE MUNDIAL: Por que os Bancos estão quebrando? WSF #125</span>
+                    <span class="card-topic">Análise da Crise Financeira Global e Implicações Políticas no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #279 banco master: a corrupção muda de patamar e está mais perto de você - wsf #279 análise profunda da crise sistêmica na república brasileira e ligações do banco master">
+                <a class="card-link" href="wsf/wsf279.html">
+                    <span class="card-kicker">WSF #279</span>
+                    <span class="card-title">BANCO MASTER: A CORRUPÇÃO MUDA DE PATAMAR E ESTÁ MAIS PERTO DE VOCÊ - WSF #279</span>
+                    <span class="card-topic">Análise Profunda da Crise Sistêmica na República Brasileira e Ligações do Banco Master</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #280 caso master: um tá preso, e os outros? a situação está piorando rapidamente. wsf #280 análise da república, corrupção e cenários políticos contemporâneos no brasil">
+                <a class="card-link" href="wsf/wsf280.html">
+                    <span class="card-kicker">WSF #280</span>
+                    <span class="card-title">CASO MASTER: UM TÁ PRESO, E OS OUTROS? A SITUAÇÃO ESTÁ PIORANDO RAPIDAMENTE. WSF #280</span>
+                    <span class="card-topic">Análise da República, Corrupção e Cenários Políticos Contemporâneos no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #281 a greve dos caminhoneiros pode derrubar a república - wsf #281 análise profunda sobre o poder, a greve dos caminhoneiros e as complexas relações políticas no brasil">
+                <a class="card-link" href="wsf/wsf281.html">
+                    <span class="card-kicker">WSF #281</span>
+                    <span class="card-title">A GREVE DOS CAMINHONEIROS PODE DERRUBAR A REPÚBLICA - WSF #281</span>
+                    <span class="card-topic">Análise Profunda sobre o Poder, a Greve dos Caminhoneiros e as Complexas Relações Políticas no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #282 lei da misoginia: a “direita bolsolepra” volta às raízes - wsf #282 análise da conjuntura política, econômica e social no brasil e perspectivas para o futuro">
+                <a class="card-link" href="wsf/wsf282.html">
+                    <span class="card-kicker">WSF #282</span>
+                    <span class="card-title">LEI DA MISOGINIA: A “DIREITA BOLSOLEPRA” VOLTA ÀS RAÍZES - WSF #282</span>
+                    <span class="card-topic">Análise da Conjuntura Política, Econômica e Social no Brasil e Perspectivas para o Futuro</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #283 gasolina a 10 reais elegerá flávio bolsonaro - wsf #283 🌍 contexto da terceira guerra mundial">
+                <a class="card-link" href="wsf/wsf283.html">
+                    <span class="card-kicker">WSF #283</span>
+                    <span class="card-title">GASOLINA A 10 REAIS ELEGERÁ FLÁVIO BOLSONARO - WSF #283</span>
+                    <span class="card-topic">🌍 Contexto da Terceira Guerra Mundial</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #284 o que rolava nas festas de vorcaro - wsf #284 🎉 festas e corrupção no brasil">
+                <a class="card-link" href="wsf/wsf284.html">
+                    <span class="card-kicker">WSF #284</span>
+                    <span class="card-title">O QUE ROLAVA NAS FESTAS DE VORCARO - WSF #284</span>
+                    <span class="card-topic">🎉 Festas e Corrupção no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #285 quem pode parar gilmar mendes? - wsf #285 🔥 crise política e judicial">
+                <a class="card-link" href="wsf/wsf285.html">
+                    <span class="card-kicker">WSF #285</span>
+                    <span class="card-title">QUEM PODE PARAR GILMAR MENDES? - WSF #285</span>
+                    <span class="card-topic">🔥 Crise Política e Judicial</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #286 qual é a maior cobra do bolsonarismo? - wsf #286 termos e conceitos-chave">
+                <a class="card-link" href="wsf/wsf286.html">
+                    <span class="card-kicker">WSF #286</span>
+                    <span class="card-title">QUAL É A MAIOR COBRA DO BOLSONARISMO? - WSF #286</span>
+                    <span class="card-topic">Termos e Conceitos-Chave</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #287 a derrota do messias de lula é o fim deste governo - wsf #287 análise da derrota do pt e cenários políticos no brasil">
+                <a class="card-link" href="wsf/wsf287.html">
+                    <span class="card-kicker">WSF #287</span>
+                    <span class="card-title">A DERROTA DO MESSIAS DE LULA É O FIM DESTE GOVERNO - WSF #287</span>
+                    <span class="card-topic">Análise da Derrota do PT e Cenários Políticos no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #288 wsf #288 🌎 relações internacionais e geopolítica">
+                <a class="card-link" href="wsf/wsf288.html">
+                    <span class="card-kicker">WSF #288</span>
+                    <span class="card-title">WSF #288</span>
+                    <span class="card-topic">🌎 Relações Internacionais e Geopolítica</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #289 michelle presidenta: quem vazou os áudios do flávio bolsonaro e quais são os resultados - wsf #289 análise detalhada do escândalo financeiro envolvendo flávio bolsonaro e as disputas internas no bolsonarismo">
+                <a class="card-link" href="wsf/wsf289.html">
+                    <span class="card-kicker">WSF #289</span>
+                    <span class="card-title">MICHELLE PRESIDENTA: QUEM VAZOU OS ÁUDIOS DO FLÁVIO BOLSONARO E QUAIS SÃO OS RESULTADOS - WSF #289</span>
+                    <span class="card-topic">Análise detalhada do escândalo financeiro envolvendo Flávio Bolsonaro e as disputas internas no bolsonarismo</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #290 flávio vai afundar e não tem bote para todo mundo - wsf #290 análise das influências e crises políticas na família bolsonaro e o sistema econômico brasileiro">
+                <a class="card-link" href="wsf/wsf290.html">
+                    <span class="card-kicker">WSF #290</span>
+                    <span class="card-title">FLÁVIO VAI AFUNDAR E NÃO TEM BOTE PARA TODO MUNDO - WSF #290</span>
+                    <span class="card-topic">Análise das Influências e Crises Políticas na Família Bolsonaro e o Sistema Econômico Brasileiro</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #291 urgente: eua classificam pcc e comando vermelho como terroristas. vitória do bolsonarismo? wsf #291 relações com o crime organizado e política nacional">
+                <a class="card-link" href="wsf/wsf291.html">
+                    <span class="card-kicker">WSF #291</span>
+                    <span class="card-title">URGENTE: EUA CLASSIFICAM PCC E COMANDO VERMELHO COMO TERRORISTAS. VITÓRIA DO BOLSONARISMO? WSF #291</span>
+                    <span class="card-topic">Relações com o Crime Organizado e Política Nacional</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #292 brasil virou inimigo dos estados unidos. o que muda na sua vida? - wsf #292 análise da relação brasil-eua, crise e cenários políticos">
+                <a class="card-link" href="wsf/wsf292.html">
+                    <span class="card-kicker">WSF #292</span>
+                    <span class="card-title">BRASIL VIROU INIMIGO DOS ESTADOS UNIDOS. O QUE MUDA NA SUA VIDA? - WSF #292</span>
+                    <span class="card-topic">Análise da Relação Brasil-EUA, Crise e Cenários Políticos</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #293 novo áudio de vorcaro enterrará de vez a candidatura de flávio bolsonaro? - wsf #293 análise da situação política brasileira e perspectivas econômicas">
+                <a class="card-link" href="wsf/wsf293.html">
+                    <span class="card-kicker">WSF #293</span>
+                    <span class="card-title">NOVO ÁUDIO DE VORCARO ENTERRARÁ DE VEZ A CANDIDATURA DE FLÁVIO BOLSONARO? - WSF #293</span>
+                    <span class="card-topic">Análise da Situação Política Brasileira e Perspectivas Econômicas</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #294 qual a diferença entre pt e bolsonarismo? - wsf #294 análise política, corrupção e movimentos sociais no brasil: uma discussão profunda">
+                <a class="card-link" href="wsf/wsf294.html">
+                    <span class="card-kicker">WSF #294</span>
+                    <span class="card-title">QUAL A DIFERENÇA ENTRE PT E BOLSONARISMO? - WSF #294</span>
+                    <span class="card-topic">Análise Política, Corrupção e Movimentos Sociais no Brasil: Uma Discussão Profunda</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #295 mbl já era ruim e conseguiu piorar - wsf #295 análise e panorama dos grupos políticos e da direita pós-bolsonaro no brasil">
+                <a class="card-link" href="wsf/wsf295.html">
+                    <span class="card-kicker">WSF #295</span>
+                    <span class="card-title">MBL JÁ ERA RUIM E CONSEGUIU PIORAR - WSF #295</span>
+                    <span class="card-topic">Análise e Panorama dos Grupos Políticos e da Direita Pós-Bolsonaro no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #296 flávio nocauteou michelle: os bastidores dessa baixaria - wsf #296 análise profunda do conflito na família bolsonaro e reflexões políticas atuais">
+                <a class="card-link" href="wsf/wsf296.html">
+                    <span class="card-kicker">WSF #296</span>
+                    <span class="card-title">FLÁVIO NOCAUTEOU MICHELLE: OS BASTIDORES DESSA BAIXARIA - WSF #296</span>
+                    <span class="card-topic">Análise Profunda do Conflito na Família Bolsonaro e Reflexões Políticas Atuais</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #297 a seleção brasileira é um reflexo do país? - wsf #297 análise e perspectivas sobre o futebol e a situação do brasil">
+                <a class="card-link" href="wsf/wsf297.html">
+                    <span class="card-kicker">WSF #297</span>
+                    <span class="card-title">A SELEÇÃO BRASILEIRA É UM REFLEXO DO PAÍS? - WSF #297</span>
+                    <span class="card-topic">Análise e Perspectivas sobre o Futebol e a Situação do Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #298 o destino de flávio é pior do que o de aécio - wsf #298 análise e perspectivas sobre o futebol e a situação do brasil">
+                <a class="card-link" href="wsf/wsf298.html">
+                    <span class="card-kicker">WSF #298</span>
+                    <span class="card-title">O DESTINO DE FLÁVIO É PIOR DO QUE O DE AÉCIO - WSF #298</span>
+                    <span class="card-topic">Análise e Perspectivas sobre o Futebol e a Situação do Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #299 os segredos de michelle bolsonaro que podem mudar tudo - wsf #299 análise da disputa interna na família bolsonaro e impactos políticos no brasil">
+                <a class="card-link" href="wsf/wsf299.html">
+                    <span class="card-kicker">WSF #299</span>
+                    <span class="card-title">OS SEGREDOS DE MICHELLE BOLSONARO QUE PODEM MUDAR TUDO - WSF #299</span>
+                    <span class="card-topic">Análise da Disputa Interna na Família Bolsonaro e Impactos Políticos no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #300 as cartas contra o lula - wsf #300 ">
+                <a class="card-link" href="wsf/wsf300.html">
+                    <span class="card-kicker">WSF #300</span>
+                    <span class="card-title">AS CARTAS CONTRA O LULA - WSF #300</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #301 a evolução do patrimônio das famílias já seria uma prova de corrupção? - wsf #301 análise da esquerda intelectual e política no brasil">
+                <a class="card-link" href="wsf/wsf301.html">
+                    <span class="card-kicker">WSF #301</span>
+                    <span class="card-title">A EVOLUÇÃO DO PATRIMÔNIO DAS FAMÍLIAS JÁ SERIA UMA PROVA DE CORRUPÇÃO? - WSF #301</span>
+                    <span class="card-topic">Análise da Esquerda Intelectual e Política no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #302 lula pode vencer já no primeiro turno - wsf #302 lula aparece próximo de vencer no primeiro turno , com pesquisas recentes mostrando entre 49% a 50% dos votos válidos.">
+                <a class="card-link" href="wsf/wsf302.html">
+                    <span class="card-kicker">WSF #302</span>
+                    <span class="card-title">LULA PODE VENCER JÁ NO PRIMEIRO TURNO - WSF #302</span>
+                    <span class="card-topic">Lula aparece próximo de vencer no primeiro turno , com pesquisas recentes mostrando entre 49% a 50% dos votos válidos.</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #303 como psdb e pt recriaram a escravidão no brasil - wsf #303 perguntas e respostas relevantes - síntese">
+                <a class="card-link" href="wsf/wsf303.html">
+                    <span class="card-kicker">WSF #303</span>
+                    <span class="card-title">COMO PSDB E PT RECRIARAM A ESCRAVIDÃO NO BRASIL - WSF #303</span>
+                    <span class="card-topic">Perguntas e Respostas Relevantes - Síntese</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #304 subiu a chance de vitória do flávio? - wsf #304 análise e cenário econômico-político: a possível vitória de flávio bolsonaro e seus impactos">
+                <a class="card-link" href="wsf/wsf304.html">
+                    <span class="card-kicker">WSF #304</span>
+                    <span class="card-title">SUBIU A CHANCE DE VITÓRIA DO FLÁVIO? - WSF #304</span>
+                    <span class="card-topic">Análise e Cenário Econômico-Político: A Possível Vitória de Flávio Bolsonaro e Seus Impactos</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #305 cury pode ser o que faltava para derrotar lula - wsf #305 análise das eleições brasileiras, influência do augusto curi e impactos socioeconômicos nas pesquisas">
+                <a class="card-link" href="wsf/wsf305.html">
+                    <span class="card-kicker">WSF #305</span>
+                    <span class="card-title">CURY PODE SER O QUE FALTAVA PARA DERROTAR LULA - WSF #305</span>
+                    <span class="card-topic">Análise das Eleições Brasileiras, Influência do Augusto Curi e Impactos Socioeconômicos nas Pesquisas</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #306 será que o mendonça ganha do dino? - wsf #306 conflitos no stf e o fim do ciclo da república brasileira">
+                <a class="card-link" href="wsf/wsf306.html">
+                    <span class="card-kicker">WSF #306</span>
+                    <span class="card-title">SERÁ QUE O MENDONÇA GANHA DO DINO? - WSF #306</span>
+                    <span class="card-topic">Conflitos no STF e o Fim do Ciclo da República Brasileira</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="catalog-section" id="rc" data-category="rc">
+        <p class="section-count"><span data-count="rc">1 resumo</span></p>
         <h3>Raiz Cristã</h3>
         <ul>
-        <li><a href="rc/2026-10-28-sPLSeDCy3Vo.html">A PROFISSÃO DO APÓSTOLO PAULO</a></li>
+            <li class="summary-card" data-search="raiz cristã · 28 out 2026 a profissão do apóstolo paulo a identidade cristã acima do ofício e da disputa política (02:01 - 14:46)">
+                <a class="card-link" href="rc/2026-10-28-sPLSeDCy3Vo.html">
+                    <span class="card-kicker">Raiz Cristã · 28 out 2026</span>
+                    <span class="card-title">A PROFISSÃO DO APÓSTOLO PAULO</span>
+                    <span class="card-topic">A identidade cristã acima do ofício e da disputa política (02:01 - 14:46)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
         </ul>
-    </nav>
+    </section>
+
+    <section class="catalog-section" id="especiais" data-category="especiais">
+        <p class="section-count"><span data-count="especiais">1 resumo</span></p>
+        <h3>Especiais</h3>
+        <ul>
+            <li class="summary-card" data-search="especial os melhores momentos do julgamento de alexandre de moraes - wsf especial conflito intenso no stf: a batalha entre ministros e os bastidores da república brasileira">
+                <a class="card-link" href="especiais/wsf306-especial.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">OS MELHORES MOMENTOS DO JULGAMENTO DE ALEXANDRE DE MORAES - WSF ESPECIAL</span>
+                    <span class="card-topic">Conflito Intenso no STF: A Batalha Entre Ministros e os Bastidores da República Brasileira</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+            </nav>
+
+            <p class="empty" id="vazio" hidden>Nenhum resumo encontrado. Tente outro termo.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Resumos do acervo <strong>WSF</strong>, <strong>Raiz Cristã</strong> e <strong>Especiais</strong>.</p>
+        <p>Confira sempre o vídeo original antes de citar ou compartilhar um trecho.</p>
+    </footer>
 </body>
 </html>
