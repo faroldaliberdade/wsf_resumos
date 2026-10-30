@@ -1,44 +1,749 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEINTRAUB SEM FILTRO - RESUMOS</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
-        h1 { color: #333; text-align: center; }
-        .lista-eps { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; padding: 0; list-style: none; }
-        .ep-link { display: block; background: #fff; padding: 12px; text-align: center; text-decoration: none; color: #333; border: 1px solid #ddd; border-radius: 6px; font-weight: bold; transition: all 0.2s ease; }
-        .ep-link:hover { background: #24292e; color: white; border-color: #24292e; }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4efe5">
+    <meta name="description" content="Resumos temáticos das lives de Weintraub sem Filtro, Raiz Cristã e programas especiais.">
+    <title>Resumos | WSF, Raiz Cristã e Especiais</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script defer src="assets/index.js"></script>
 </head>
 <body>
+    <a class="skip-link" href="#acervo">Pular para o acervo</a>
 
-    <h1>WEINTRAUB SEM FILTRO - RESUMOS</h1>
-    <ul id="grade-episodios" class="lista-eps"></ul>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Resumos — início">
+            <span class="brand-mark">WSF</span>
+            <span class="brand-name">Resumos</span>
+        </a>
+        <div class="top-links">
+            <a href="#wsf">WSF</a>
+            <a href="#rc">Raiz Cristã</a>
+            <a href="#especiais">Especiais</a>
+        </div>
+    </header>
 
-    <script>
-        const container = document.getElementById('grade-episodios');
+    <main>
+        <section class="hero" aria-labelledby="hero-title">
+            <p class="eyebrow">Acervo editorial</p>
+            <h1 id="hero-title">As lives,<br><em>organizadas.</em></h1>
+            <p class="lede">Resumos temáticos com marcas de tempo para conferir cada passagem no vídeo original. Um arquivo para consultar, revisar e acompanhar os programas.</p>
+            <dl class="stats">
+                <div><dt>Total</dt><dd data-stat="total">82</dd></div>
+                <div><dt>WSF</dt><dd data-stat="wsf">36</dd></div>
+                <div><dt>Raiz Cristã</dt><dd data-stat="rc">22</dd></div>
+                <div><dt>Especiais</dt><dd data-stat="especiais">24</dd></div>
+            </dl>
+        </section>
 
-        // Loop que testa os episódios do 1 ao 1000
-        for (let i = 1; i <= 1000; i++) {
-            // Formata o número com 3 dígitos (ex: 1 vira 001)
-            const numFormata = String(i).padStart(3, '0');
-            const nomeArquivo = `wsf${numFormata}.html`;
+        <section class="catalog" id="acervo" aria-labelledby="acervo-title">
+            <div class="catalog-head">
+                <div>
+                    <p class="eyebrow">Navegue</p>
+                    <h2 id="acervo-title">Acervo completo</h2>
+                </div>
+                <div class="search-wrap">
+                    <label for="busca">Buscar no acervo</label>
+                    <input id="busca" type="search" placeholder="Episódio, tema ou palavra-chave" autocomplete="off">
+                    <button type="button" class="clear" id="limpar" hidden>Limpar</button>
+                </div>
+            </div>
 
-            // Faz uma requisição rápida para checar se o arquivo existe no GitHub Pages
-            fetch(nomeArquivo, { method: 'HEAD' })
-                .then(response => {
-                    // Se o arquivo existir (status 200), cria o botão na tela
-                    if (response.ok) {
-                        const li = document.createElement('li');
-                        li.innerHTML = `<a class="ep-link" href="${nomeArquivo}">Episódio ${numFormata}</a>`;
-                        container.appendChild(li);
-                    }
-                })
-                .catch(() => { /* Ignora erros de arquivos que não existem */ });
-        }
-    </script>
+            <div class="filters" role="group" aria-label="Filtrar por programa">
+                <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">Todos</button>
+                <button type="button" class="filter" data-filter="wsf" aria-pressed="false">Weintraub sem Filtro</button>
+                <button type="button" class="filter" data-filter="rc" aria-pressed="false">Raiz Cristã</button>
+                <button type="button" class="filter" data-filter="especiais" aria-pressed="false">Especiais</button>
+            </div>
 
+            <p class="result" id="resultado" role="status" aria-live="polite">Mostrando 82 resumos.</p>
+
+            <nav id="resumos-novos" aria-label="Novos resumos">
+    <section class="catalog-section" id="wsf" data-category="wsf">
+        <p class="section-count"><span data-count="wsf">36 resumos</span></p>
+        <h3>Weintraub sem Filtro</h3>
+        <ul>
+            <li class="summary-card" data-search="wsf #001 weintraub sem filtro - #1 cenário econômico atual e estratégias de proteção ao cidadão brasileiro">
+                <a class="card-link" href="wsf/wsf001.html">
+                    <span class="card-kicker">WSF #001</span>
+                    <span class="card-title">WEINTRAUB SEM FILTRO - #1</span>
+                    <span class="card-topic">Cenário Econômico Atual e Estratégias de Proteção ao Cidadão Brasileiro</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #125 crise mundial: por que os bancos estão quebrando? wsf #125 análise da crise financeira global e implicações políticas no brasil">
+                <a class="card-link" href="wsf/wsf125.html">
+                    <span class="card-kicker">WSF #125</span>
+                    <span class="card-title">CRISE MUNDIAL: Por que os Bancos estão quebrando? WSF #125</span>
+                    <span class="card-topic">Análise da Crise Financeira Global e Implicações Políticas no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #279 banco master: a corrupção muda de patamar e está mais perto de você - wsf #279 análise profunda da crise sistêmica na república brasileira e ligações do banco master">
+                <a class="card-link" href="wsf/wsf279.html">
+                    <span class="card-kicker">WSF #279</span>
+                    <span class="card-title">BANCO MASTER: A CORRUPÇÃO MUDA DE PATAMAR E ESTÁ MAIS PERTO DE VOCÊ - WSF #279</span>
+                    <span class="card-topic">Análise Profunda da Crise Sistêmica na República Brasileira e Ligações do Banco Master</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #280 caso master: um tá preso, e os outros? a situação está piorando rapidamente. wsf #280 análise da república, corrupção e cenários políticos contemporâneos no brasil">
+                <a class="card-link" href="wsf/wsf280.html">
+                    <span class="card-kicker">WSF #280</span>
+                    <span class="card-title">CASO MASTER: UM TÁ PRESO, E OS OUTROS? A SITUAÇÃO ESTÁ PIORANDO RAPIDAMENTE. WSF #280</span>
+                    <span class="card-topic">Análise da República, Corrupção e Cenários Políticos Contemporâneos no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #281 a greve dos caminhoneiros pode derrubar a república - wsf #281 análise profunda sobre o poder, a greve dos caminhoneiros e as complexas relações políticas no brasil">
+                <a class="card-link" href="wsf/wsf281.html">
+                    <span class="card-kicker">WSF #281</span>
+                    <span class="card-title">A GREVE DOS CAMINHONEIROS PODE DERRUBAR A REPÚBLICA - WSF #281</span>
+                    <span class="card-topic">Análise Profunda sobre o Poder, a Greve dos Caminhoneiros e as Complexas Relações Políticas no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #282 lei da misoginia: a “direita bolsolepra” volta às raízes - wsf #282 análise da conjuntura política, econômica e social no brasil e perspectivas para o futuro">
+                <a class="card-link" href="wsf/wsf282.html">
+                    <span class="card-kicker">WSF #282</span>
+                    <span class="card-title">LEI DA MISOGINIA: A “DIREITA BOLSOLEPRA” VOLTA ÀS RAÍZES - WSF #282</span>
+                    <span class="card-topic">Análise da Conjuntura Política, Econômica e Social no Brasil e Perspectivas para o Futuro</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #283 gasolina a 10 reais elegerá flávio bolsonaro - wsf #283 🌍 contexto da terceira guerra mundial">
+                <a class="card-link" href="wsf/wsf283.html">
+                    <span class="card-kicker">WSF #283</span>
+                    <span class="card-title">GASOLINA A 10 REAIS ELEGERÁ FLÁVIO BOLSONARO - WSF #283</span>
+                    <span class="card-topic">🌍 Contexto da Terceira Guerra Mundial</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #284 o que rolava nas festas de vorcaro - wsf #284 🎉 festas e corrupção no brasil">
+                <a class="card-link" href="wsf/wsf284.html">
+                    <span class="card-kicker">WSF #284</span>
+                    <span class="card-title">O QUE ROLAVA NAS FESTAS DE VORCARO - WSF #284</span>
+                    <span class="card-topic">🎉 Festas e Corrupção no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #285 quem pode parar gilmar mendes? - wsf #285 🔥 crise política e judicial">
+                <a class="card-link" href="wsf/wsf285.html">
+                    <span class="card-kicker">WSF #285</span>
+                    <span class="card-title">QUEM PODE PARAR GILMAR MENDES? - WSF #285</span>
+                    <span class="card-topic">🔥 Crise Política e Judicial</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #286 qual é a maior cobra do bolsonarismo? - wsf #286 termos e conceitos-chave">
+                <a class="card-link" href="wsf/wsf286.html">
+                    <span class="card-kicker">WSF #286</span>
+                    <span class="card-title">QUAL É A MAIOR COBRA DO BOLSONARISMO? - WSF #286</span>
+                    <span class="card-topic">Termos e Conceitos-Chave</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #287 a derrota do messias de lula é o fim deste governo - wsf #287 análise da derrota do pt e cenários políticos no brasil">
+                <a class="card-link" href="wsf/wsf287.html">
+                    <span class="card-kicker">WSF #287</span>
+                    <span class="card-title">A DERROTA DO MESSIAS DE LULA É O FIM DESTE GOVERNO - WSF #287</span>
+                    <span class="card-topic">Análise da Derrota do PT e Cenários Políticos no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #288 wsf #288 🌎 relações internacionais e geopolítica">
+                <a class="card-link" href="wsf/wsf288.html">
+                    <span class="card-kicker">WSF #288</span>
+                    <span class="card-title">WSF #288</span>
+                    <span class="card-topic">🌎 Relações Internacionais e Geopolítica</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #289 michelle presidenta: quem vazou os áudios do flávio bolsonaro e quais são os resultados - wsf #289 análise detalhada do escândalo financeiro envolvendo flávio bolsonaro e as disputas internas no bolsonarismo">
+                <a class="card-link" href="wsf/wsf289.html">
+                    <span class="card-kicker">WSF #289</span>
+                    <span class="card-title">MICHELLE PRESIDENTA: QUEM VAZOU OS ÁUDIOS DO FLÁVIO BOLSONARO E QUAIS SÃO OS RESULTADOS - WSF #289</span>
+                    <span class="card-topic">Análise detalhada do escândalo financeiro envolvendo Flávio Bolsonaro e as disputas internas no bolsonarismo</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #290 flávio vai afundar e não tem bote para todo mundo - wsf #290 análise das influências e crises políticas na família bolsonaro e o sistema econômico brasileiro">
+                <a class="card-link" href="wsf/wsf290.html">
+                    <span class="card-kicker">WSF #290</span>
+                    <span class="card-title">FLÁVIO VAI AFUNDAR E NÃO TEM BOTE PARA TODO MUNDO - WSF #290</span>
+                    <span class="card-topic">Análise das Influências e Crises Políticas na Família Bolsonaro e o Sistema Econômico Brasileiro</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #291 urgente: eua classificam pcc e comando vermelho como terroristas. vitória do bolsonarismo? wsf #291 relações com o crime organizado e política nacional">
+                <a class="card-link" href="wsf/wsf291.html">
+                    <span class="card-kicker">WSF #291</span>
+                    <span class="card-title">URGENTE: EUA CLASSIFICAM PCC E COMANDO VERMELHO COMO TERRORISTAS. VITÓRIA DO BOLSONARISMO? WSF #291</span>
+                    <span class="card-topic">Relações com o Crime Organizado e Política Nacional</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #292 brasil virou inimigo dos estados unidos. o que muda na sua vida? - wsf #292 análise da relação brasil-eua, crise e cenários políticos">
+                <a class="card-link" href="wsf/wsf292.html">
+                    <span class="card-kicker">WSF #292</span>
+                    <span class="card-title">BRASIL VIROU INIMIGO DOS ESTADOS UNIDOS. O QUE MUDA NA SUA VIDA? - WSF #292</span>
+                    <span class="card-topic">Análise da Relação Brasil-EUA, Crise e Cenários Políticos</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #293 novo áudio de vorcaro enterrará de vez a candidatura de flávio bolsonaro? - wsf #293 análise da situação política brasileira e perspectivas econômicas">
+                <a class="card-link" href="wsf/wsf293.html">
+                    <span class="card-kicker">WSF #293</span>
+                    <span class="card-title">NOVO ÁUDIO DE VORCARO ENTERRARÁ DE VEZ A CANDIDATURA DE FLÁVIO BOLSONARO? - WSF #293</span>
+                    <span class="card-topic">Análise da Situação Política Brasileira e Perspectivas Econômicas</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #294 qual a diferença entre pt e bolsonarismo? - wsf #294 análise política, corrupção e movimentos sociais no brasil: uma discussão profunda">
+                <a class="card-link" href="wsf/wsf294.html">
+                    <span class="card-kicker">WSF #294</span>
+                    <span class="card-title">QUAL A DIFERENÇA ENTRE PT E BOLSONARISMO? - WSF #294</span>
+                    <span class="card-topic">Análise Política, Corrupção e Movimentos Sociais no Brasil: Uma Discussão Profunda</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #295 mbl já era ruim e conseguiu piorar - wsf #295 análise e panorama dos grupos políticos e da direita pós-bolsonaro no brasil">
+                <a class="card-link" href="wsf/wsf295.html">
+                    <span class="card-kicker">WSF #295</span>
+                    <span class="card-title">MBL JÁ ERA RUIM E CONSEGUIU PIORAR - WSF #295</span>
+                    <span class="card-topic">Análise e Panorama dos Grupos Políticos e da Direita Pós-Bolsonaro no Brasil</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #296 flávio nocauteou michelle: os bastidores dessa baixaria - wsf #296 bastidores da ofensiva contra michele: aval de jair, vitória de flávio e alegações coordenadas (02:02 - 12:04)">
+                <a class="card-link" href="wsf/wsf296.html">
+                    <span class="card-kicker">WSF #296</span>
+                    <span class="card-title">FLÁVIO NOCAUTEOU MICHELLE: OS BASTIDORES DESSA BAIXARIA - WSF #296</span>
+                    <span class="card-topic">Bastidores da ofensiva contra Michele: aval de Jair, vitória de Flávio e alegações coordenadas (02:02 - 12:04)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #297 a seleção brasileira é um reflexo do país? - wsf #297 a copa como termômetro do brasil: hipótese, ressalvas e autoimagem nacional (02:29 - 13:29)">
+                <a class="card-link" href="wsf/wsf297.html">
+                    <span class="card-kicker">WSF #297</span>
+                    <span class="card-title">A SELEÇÃO BRASILEIRA É UM REFLEXO DO PAÍS? - WSF #297</span>
+                    <span class="card-topic">A Copa como termômetro do Brasil: hipótese, ressalvas e autoimagem nacional (02:29 - 13:29)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #298 o destino de flávio é pior do que o de aécio - wsf #298 de aécio a flávio: desconstrução de imagem, redes bolsonaristas e sucessão (01:26 - 14:43)">
+                <a class="card-link" href="wsf/wsf298.html">
+                    <span class="card-kicker">WSF #298</span>
+                    <span class="card-title">O DESTINO DE FLÁVIO É PIOR DO QUE O DE AÉCIO - WSF #298</span>
+                    <span class="card-topic">De Aécio a Flávio: desconstrução de imagem, redes bolsonaristas e sucessão (01:26 - 14:43)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #299 os segredos de michelle bolsonaro que podem mudar tudo - wsf #299 briga de bug: a disputa na família bolsonaro e a atuação política de michelle (03:53 - 10:42)">
+                <a class="card-link" href="wsf/wsf299.html">
+                    <span class="card-kicker">WSF #299</span>
+                    <span class="card-title">OS SEGREDOS DE MICHELLE BOLSONARO QUE PODEM MUDAR TUDO - WSF #299</span>
+                    <span class="card-topic">Briga de bug: a disputa na família Bolsonaro e a atuação política de Michelle (03:53 - 10:42)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #300 as cartas contra o lula - wsf #300 ">
+                <a class="card-link" href="wsf/wsf300.html">
+                    <span class="card-kicker">WSF #300</span>
+                    <span class="card-title">AS CARTAS CONTRA O LULA - WSF #300</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #301 a evolução do patrimônio das famílias já seria uma prova de corrupção? - wsf #301 a tese de eric ferreira gomes sobre a esquerda intelectual, alianças psdb-pt e poder econômico (01:18 - 14:54)">
+                <a class="card-link" href="wsf/wsf301.html">
+                    <span class="card-kicker">WSF #301</span>
+                    <span class="card-title">A EVOLUÇÃO DO PATRIMÔNIO DAS FAMÍLIAS JÁ SERIA UMA PROVA DE CORRUPÇÃO? - WSF #301</span>
+                    <span class="card-topic">A tese de Eric Ferreira Gomes sobre a esquerda intelectual, alianças PSDB-PT e poder econômico (01:18 - 14:54)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #302 lula pode vencer já no primeiro turno - wsf #302 lula aparece próximo de vencer no primeiro turno , com pesquisas recentes mostrando entre 49% a 50% dos votos válidos.">
+                <a class="card-link" href="wsf/wsf302.html">
+                    <span class="card-kicker">WSF #302</span>
+                    <span class="card-title">LULA PODE VENCER JÁ NO PRIMEIRO TURNO - WSF #302</span>
+                    <span class="card-topic">Lula aparece próximo de vencer no primeiro turno , com pesquisas recentes mostrando entre 49% a 50% dos votos válidos.</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #303 como psdb e pt recriaram a escravidão no brasil - wsf #303 a tese de uma servidão contemporânea no brasil e a responsabilidade atribuída a psdb e pt (02:00 - 10:15)">
+                <a class="card-link" href="wsf/wsf303.html">
+                    <span class="card-kicker">WSF #303</span>
+                    <span class="card-title">COMO PSDB E PT RECRIARAM A ESCRAVIDÃO NO BRASIL - WSF #303</span>
+                    <span class="card-topic">A tese de uma servidão contemporânea no Brasil e a responsabilidade atribuída a PSDB e PT (02:00 - 10:15)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #304 subiu a chance de vitória do flávio? - wsf #304 ceticismo sobre a tese de vitória de flávio e o suposto rally do mercado (00:52 - 14:47)">
+                <a class="card-link" href="wsf/wsf304.html">
+                    <span class="card-kicker">WSF #304</span>
+                    <span class="card-title">SUBIU A CHANCE DE VITÓRIA DO FLÁVIO? - WSF #304</span>
+                    <span class="card-topic">Ceticismo sobre a tese de vitória de Flávio e o suposto rally do mercado (00:52 - 14:47)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #305 cury pode ser o que faltava para derrotar lula - wsf #305 augusto curi, pesquisas e o voto de centro (02:04 - 14:30)">
+                <a class="card-link" href="wsf/wsf305.html">
+                    <span class="card-kicker">WSF #305</span>
+                    <span class="card-title">CURY PODE SER O QUE FALTAVA PARA DERROTAR LULA - WSF #305</span>
+                    <span class="card-topic">Augusto Curi, pesquisas e o voto de centro (02:04 - 14:30)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #306 será que o mendonça ganha do dino? - wsf #306 conflitos no stf e o fim do ciclo da república brasileira">
+                <a class="card-link" href="wsf/wsf306.html">
+                    <span class="card-kicker">WSF #306</span>
+                    <span class="card-title">SERÁ QUE O MENDONÇA GANHA DO DINO? - WSF #306</span>
+                    <span class="card-topic">Conflitos no STF e o Fim do Ciclo da República Brasileira</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #307 as vantagens e desvantagens da vitória de lula - wsf #307 prós e contras da vitória de lula e a analogia com a argentina (00:57 - 14:30)">
+                <a class="card-link" href="wsf/wsf307.html">
+                    <span class="card-kicker">WSF #307</span>
+                    <span class="card-title">AS VANTAGENS E DESVANTAGENS DA VITÓRIA DE LULA - WSF #307</span>
+                    <span class="card-topic">Prós e contras da vitória de Lula e a analogia com a Argentina (00:57 - 14:30)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #308 é possível acabar com as bets? - wsf #308 a expansão das bets e o debate sobre vício, impulsos e responsabilidade pública (01:05 - 14:18)">
+                <a class="card-link" href="wsf/wsf308.html">
+                    <span class="card-kicker">WSF #308</span>
+                    <span class="card-title">É POSSÍVEL ACABAR COM AS BETS? - WSF #308</span>
+                    <span class="card-topic">A expansão das bets e o debate sobre vício, impulsos e responsabilidade pública (01:05 - 14:18)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #309 weintraub revela o voto: entre lula e bolsonaro eu vou... - wsf #309 globo, bets e a recusa ao voto: critérios e dilemas eleitorais (00:53 - 14:55)">
+                <a class="card-link" href="wsf/wsf309.html">
+                    <span class="card-kicker">WSF #309</span>
+                    <span class="card-title">WEINTRAUB REVELA O VOTO: ENTRE LULA E BOLSONARO EU VOU... - WSF #309</span>
+                    <span class="card-topic">Globo, bets e a recusa ao voto: critérios e dilemas eleitorais (00:53 - 14:55)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #310 o brasil é o país de homens de geléia - wsf #310 projeções eleitorais, alianças políticas e expectativas de mudança (01:39 - 13:31)">
+                <a class="card-link" href="wsf/wsf310.html">
+                    <span class="card-kicker">WSF #310</span>
+                    <span class="card-title">O BRASIL É O PAÍS DE HOMENS DE GELÉIA - WSF #310</span>
+                    <span class="card-topic">Projeções eleitorais, alianças políticas e expectativas de mudança (01:39 - 13:31)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #311 o próximo presidente terá que evitar a explosão do déficit fiscal e da dívida pública - wsf #311 preparação política, crise fiscal e propostas de controle do gasto público (01:47 - 14:53)">
+                <a class="card-link" href="wsf/wsf311.html">
+                    <span class="card-kicker">WSF #311</span>
+                    <span class="card-title">O PRÓXIMO PRESIDENTE TERÁ QUE EVITAR A EXPLOSÃO DO DÉFICIT FISCAL E DA DÍVIDA PÚBLICA - WSF #311</span>
+                    <span class="card-topic">Preparação política, crise fiscal e propostas de controle do gasto público (01:47 - 14:53)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="wsf #312 façam suas apostas antes que o cassino feche - wsf #312 limites para manifestações eleitorais e condutas nas redes do farol da liberdade (01:34 - 09:23)">
+                <a class="card-link" href="wsf/wsf312.html">
+                    <span class="card-kicker">WSF #312</span>
+                    <span class="card-title">FAÇAM SUAS APOSTAS ANTES QUE O CASSINO FECHE - WSF #312</span>
+                    <span class="card-topic">Limites para manifestações eleitorais e condutas nas redes do Farol da Liberdade (01:34 - 09:23)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="catalog-section" id="rc" data-category="rc">
+        <p class="section-count"><span data-count="rc">22 resumos</span></p>
+        <h3>Raiz Cristã</h3>
+        <ul>
+            <li class="summary-card" data-search="raiz cristã · 28 out 2026 a profissão do apóstolo paulo a identidade cristã acima do ofício e da disputa política (02:01 - 14:46)">
+                <a class="card-link" href="rc/2026-10-28-sPLSeDCy3Vo.html">
+                    <span class="card-kicker">Raiz Cristã · 28 out 2026</span>
+                    <span class="card-title">A PROFISSÃO DO APÓSTOLO PAULO</span>
+                    <span class="card-topic">A identidade cristã acima do ofício e da disputa política (02:01 - 14:46)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 21 out 2026 padre morre durante a missa, que lição tiramos disso? morte súbita durante a missa: finitude, fé e a queda da cruz (01:06 - 13:03)">
+                <a class="card-link" href="rc/2026-10-21-hmrfYandxlU.html">
+                    <span class="card-kicker">Raiz Cristã · 21 out 2026</span>
+                    <span class="card-title">PADRE MORRE DURANTE A MISSA, QUE LIÇÃO TIRAMOS DISSO?</span>
+                    <span class="card-topic">Morte súbita durante a missa: finitude, fé e a queda da cruz (01:06 - 13:03)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 14 out 2026 vale tudo por política? desrespeito e idolatria no santuário de aparecida política, fé e idolatria no santuário de aparecida: disputas eleitorais e desrespeito à romaria (01:37 - 14:36)">
+                <a class="card-link" href="rc/2026-10-14-nJYL4lJzkkA.html">
+                    <span class="card-kicker">Raiz Cristã · 14 out 2026</span>
+                    <span class="card-title">VALE TUDO POR POLÍTICA? DESRESPEITO E IDOLATRIA NO SANTUÁRIO DE APARECIDA</span>
+                    <span class="card-topic">Política, fé e idolatria no Santuário de Aparecida: disputas eleitorais e desrespeito à romaria (01:37 - 14:36)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 07 out 2026 sadraque, mesaque e abede-nego: eles foram jogados no fogo… mas algo impossível aconteceu fidelidade e recusa de se curvar: paralelos entre sadraque, mesaque e abede-nego, daniel e os dias atuais (00:57 - 10:53)">
+                <a class="card-link" href="rc/2026-10-07-X3w45PYbws0.html">
+                    <span class="card-kicker">Raiz Cristã · 07 out 2026</span>
+                    <span class="card-title">SADRAQUE, MESAQUE E ABEDE-NEGO: ELES FORAM JOGADOS NO FOGO… MAS ALGO IMPOSSÍVEL ACONTECEU</span>
+                    <span class="card-topic">Fidelidade e recusa de se curvar: paralelos entre Sadraque, Mesaque e Abede-Nego, Daniel e os dias atuais (00:57 - 10:53)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 30 set 2026 querem tirar nossa senhora aparecida de padroeira do brasil? nossa senhora aparecida entre devoção, política e críticas evangélicas (00:30 - 14:31)">
+                <a class="card-link" href="rc/2026-09-30-ZhF91c9DiYA.html">
+                    <span class="card-kicker">Raiz Cristã · 30 set 2026</span>
+                    <span class="card-title">QUEREM TIRAR NOSSA SENHORA APARECIDA DE PADROEIRA DO BRASIL?</span>
+                    <span class="card-topic">Nossa Senhora Aparecida entre devoção, política e críticas evangélicas (00:30 - 14:31)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 23 set 2026 jeroboão: o rei que desafiou deus jeroboão, a idolatria e a perseverança diante do mal (01:34 - 14:06)">
+                <a class="card-link" href="rc/2026-09-23-FwjkgVXxZko.html">
+                    <span class="card-kicker">Raiz Cristã · 23 set 2026</span>
+                    <span class="card-title">JEROBOÃO: O REI QUE DESAFIOU DEUS</span>
+                    <span class="card-topic">Jeroboão, a idolatria e a perseverança diante do mal (01:34 - 14:06)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 16 set 2026 temos um contrato com deus? aliança cristã, graça e serenidade estoica (02:51 - 14:25)">
+                <a class="card-link" href="rc/2026-09-16-Cwx0wxmhzRc.html">
+                    <span class="card-kicker">Raiz Cristã · 16 set 2026</span>
+                    <span class="card-title">TEMOS UM CONTRATO COM DEUS?</span>
+                    <span class="card-topic">Aliança cristã, graça e serenidade estoica (02:51 - 14:25)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 09 set 2026 a história proibida? edith stein, a santa judia edith stein, identidade judaica e antissemitismo no episódio (02:24 - 13:17)">
+                <a class="card-link" href="rc/2026-09-09-lrUzO69vHW8.html">
+                    <span class="card-kicker">Raiz Cristã · 09 set 2026</span>
+                    <span class="card-title">A HISTÓRIA PROIBIDA? EDITH STEIN, A SANTA JUDIA</span>
+                    <span class="card-topic">Edith Stein, identidade judaica e antissemitismo no episódio (02:24 - 13:17)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 02 set 2026 pode vir alguma coisa boa de nazaré? nazaré, preconceito de origem e debates sobre moralidade, justiça e purgatório (01:03 - 14:59)">
+                <a class="card-link" href="rc/2026-09-02-pNy6R4DZ7ts.html">
+                    <span class="card-kicker">Raiz Cristã · 02 set 2026</span>
+                    <span class="card-title">PODE VIR ALGUMA COISA BOA DE NAZARÉ?</span>
+                    <span class="card-topic">Nazaré, preconceito de origem e debates sobre moralidade, justiça e purgatório (01:03 - 14:59)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 26 ago 2026 deus só educa quem ele se importa educação, disciplina e cuidado na vida espiritual (01:33 - 10:56)">
+                <a class="card-link" href="rc/2026-08-26-0dElDwXq8gw.html">
+                    <span class="card-kicker">Raiz Cristã · 26 ago 2026</span>
+                    <span class="card-title">DEUS SÓ EDUCA QUEM ELE SE IMPORTA</span>
+                    <span class="card-topic">Educação, disciplina e cuidado na vida espiritual (01:33 - 10:56)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 19 ago 2026 os travestis e a bíblia eunucos, acolhimento e conduta cristã na leitura bíblica (03:58 - 12:17)">
+                <a class="card-link" href="rc/2026-08-19-6xpxBAbNUtU.html">
+                    <span class="card-kicker">Raiz Cristã · 19 ago 2026</span>
+                    <span class="card-title">OS TRAVESTIS E A BÍBLIA</span>
+                    <span class="card-topic">Eunucos, acolhimento e conduta cristã na leitura bíblica (03:58 - 12:17)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 12 ago 2026 o segredo do jejum bíblico que a maioria ignora jejum como prática pessoal, biológica e bíblica (02:52 - 15:03)">
+                <a class="card-link" href="rc/2026-08-12-9YGU0wb3Pnk.html">
+                    <span class="card-kicker">Raiz Cristã · 12 ago 2026</span>
+                    <span class="card-title">O SEGREDO DO JEJUM BÍBLICO QUE A MAIORIA IGNORA</span>
+                    <span class="card-topic">Jejum como prática pessoal, biológica e bíblica (02:52 - 15:03)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 05 ago 2026 médicos satânicos ao longo da história médicos na bíblia e críticas a &#x27;ft&#x27;/&#x27;falte&#x27; (02:54 - 14:15)">
+                <a class="card-link" href="rc/2026-08-05-V0v7m31TDo8.html">
+                    <span class="card-kicker">Raiz Cristã · 05 ago 2026</span>
+                    <span class="card-title">MÉDICOS SATÂNICOS AO LONGO DA HISTÓRIA</span>
+                    <span class="card-topic">Médicos na Bíblia e críticas a &#x27;FT&#x27;/&#x27;Falte&#x27; (02:54 - 14:15)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 29 jul 2026 o discípulo mais importante de jesus judas entre profecia, culpa e a possibilidade de recusa (01:21 - 13:54)">
+                <a class="card-link" href="rc/2026-07-29-VJ5nFSevcvE.html">
+                    <span class="card-kicker">Raiz Cristã · 29 jul 2026</span>
+                    <span class="card-title">O DISCÍPULO MAIS IMPORTANTE DE JESUS</span>
+                    <span class="card-topic">Judas entre profecia, culpa e a possibilidade de recusa (01:21 - 13:54)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 22 jul 2026 santo agostinho era devasso? santo agostinho entre concupiscência, conversão e o “checklist” brasileiro (00:59 - 14:46)">
+                <a class="card-link" href="rc/2026-07-22-XfoBbB4IOFw.html">
+                    <span class="card-kicker">Raiz Cristã · 22 jul 2026</span>
+                    <span class="card-title">SANTO AGOSTINHO ERA DEVASSO?</span>
+                    <span class="card-topic">Santo Agostinho entre concupiscência, conversão e o “checklist” brasileiro (00:59 - 14:46)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 15 jul 2026 o maior cisma católico em décadas: o que está acontecendo no vaticano? cisma na igreja católica: fraternidade são pio x, liturgia tradicional e autoridade papal (01:24 - 14:27)">
+                <a class="card-link" href="rc/2026-07-15-W0FQZcPgAFg.html">
+                    <span class="card-kicker">Raiz Cristã · 15 jul 2026</span>
+                    <span class="card-title">O MAIOR CISMA CATÓLICO EM DÉCADAS: O QUE ESTÁ ACONTECENDO NO VATICANO?</span>
+                    <span class="card-topic">Cisma na Igreja Católica: Fraternidade São Pio X, liturgia tradicional e autoridade papal (01:24 - 14:27)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 08 jul 2026 é possível ser corrupto e cristão? corrupção, fé cristã e a leitura bolsonarista da parábola do administrador astuto (02:17 - 15:00)">
+                <a class="card-link" href="rc/2026-07-08-UOTQnn0jGN4.html">
+                    <span class="card-kicker">Raiz Cristã · 08 jul 2026</span>
+                    <span class="card-title">É POSSÍVEL SER CORRUPTO E CRISTÃO?</span>
+                    <span class="card-topic">Corrupção, fé cristã e a leitura bolsonarista da parábola do administrador astuto (02:17 - 15:00)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 01 jul 2026 a lepra e a biblia cura da lepra e purificação nas passagens bíblicas (05:59 - 13:22)">
+                <a class="card-link" href="rc/2026-07-01-svAY7zUtENU.html">
+                    <span class="card-kicker">Raiz Cristã · 01 jul 2026</span>
+                    <span class="card-title">A LEPRA E A BIBLIA</span>
+                    <span class="card-topic">Cura da lepra e purificação nas passagens bíblicas (05:59 - 13:22)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 24 jun 2026 china continua perseguindo cristãos perseguição a cristãos na china e debates sobre liberdade religiosa (00:08 - 12:21)">
+                <a class="card-link" href="rc/2026-06-24-LVmGYYliZug.html">
+                    <span class="card-kicker">Raiz Cristã · 24 jun 2026</span>
+                    <span class="card-title">CHINA CONTINUA PERSEGUINDO CRISTÃOS</span>
+                    <span class="card-topic">Perseguição a cristãos na China e debates sobre liberdade religiosa (00:08 - 12:21)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 10 jun 2026 a marcha para jesus virou palanque eleitoral? política na marcha para jesus e críticas à instrumentalização da fé (00:43 - 14:28)">
+                <a class="card-link" href="rc/2026-06-10-xdNqJ6CmU1A.html">
+                    <span class="card-kicker">Raiz Cristã · 10 jun 2026</span>
+                    <span class="card-title">A MARCHA PARA JESUS VIROU PALANQUE ELEITORAL?</span>
+                    <span class="card-topic">Política na Marcha para Jesus e críticas à instrumentalização da fé (00:43 - 14:28)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 03 jun 2026 a lição de jesus que muitos cristãos ignoram oração em segredo, ceticismo sobre ets e crítica ao vídeo de deltan (02:20 - 13:10)">
+                <a class="card-link" href="rc/2026-06-03-Qrh_B3QJN_o.html">
+                    <span class="card-kicker">Raiz Cristã · 03 jun 2026</span>
+                    <span class="card-title">A LIÇÃO DE JESUS QUE MUITOS CRISTÃOS IGNORAM</span>
+                    <span class="card-topic">Oração em segredo, ceticismo sobre ETs e crítica ao vídeo de Deltan (02:20 - 13:10)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="raiz cristã · 27 mai 2026 deus e a física quântica: como eles se misturam? física quântica, universos alternativos e fé diante do livre-arbítrio (01:40 - 14:01)">
+                <a class="card-link" href="rc/2026-05-27-zkuYyFjA-dg.html">
+                    <span class="card-kicker">Raiz Cristã · 27 mai 2026</span>
+                    <span class="card-title">DEUS E A FÍSICA QUÂNTICA: COMO ELES SE MISTURAM?</span>
+                    <span class="card-topic">Física quântica, universos alternativos e fé diante do livre-arbítrio (01:40 - 14:01)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="catalog-section" id="especiais" data-category="especiais">
+        <p class="section-count"><span data-count="especiais">24 resumos</span></p>
+        <h3>Especiais</h3>
+        <ul>
+            <li class="summary-card" data-search="especial os melhores momentos do julgamento de alexandre de moraes - wsf especial stf: participantes veem ataque duro a mendonça e leem risada como recado (02:02 - 13:50)">
+                <a class="card-link" href="especiais/wsf306-especial.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">OS MELHORES MOMENTOS DO JULGAMENTO DE ALEXANDRE DE MORAES - WSF ESPECIAL</span>
+                    <span class="card-topic">STF: participantes veem ataque duro a Mendonça e leem risada como recado (02:02 - 13:50)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial edir macedo afirma: deus é obrigado a te abençoa teologia da retribuição, graça e crítica político-religiosa a edir macedo (01:35 - 13:55)">
+                <a class="card-link" href="especiais/2026-06-18-iMC06tIaTBI.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">EDIR MACEDO AFIRMA: DEUS É OBRIGADO A TE ABENÇOA</span>
+                    <span class="card-topic">Teologia da retribuição, graça e crítica político-religiosa a Edir Macedo (01:35 - 13:55)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial brasil fora da copa e as eleições: o fim de neymar e do bolsonarismo seleção, neymar e bolsonarismo: vexame, modelo negativo e lógica de purga (01:02 - 11:04)">
+                <a class="card-link" href="especiais/2026-07-08-P8ywTKqq0Mw.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">BRASIL FORA DA COPA E AS ELEIÇÕES: O FIM DE NEYMAR E DO BOLSONARISMO</span>
+                    <span class="card-topic">Seleção, Neymar e bolsonarismo: vexame, modelo negativo e lógica de purga (01:02 - 11:04)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial flávio bolsonaro não concorrerá à presidência? quem ficará no seu lugar? desgaste da candidatura de flávio bolsonaro, críticas à direita bolsonarista e especulações sobre uma candidatura ao senado no rio (00:53 - 13:50)">
+                <a class="card-link" href="especiais/2026-07-15-aEX0rkRy6v4.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">FLÁVIO BOLSONARO NÃO CONCORRERÁ À PRESIDÊNCIA? QUEM FICARÁ NO SEU LUGAR?</span>
+                    <span class="card-topic">Desgaste da candidatura de Flávio Bolsonaro, críticas à direita bolsonarista e especulações sobre uma candidatura ao Senado no Rio (00:53 - 13:50)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial a &quot;neta&quot; misteriosa de michelle bolsonaro debate sobre a paternidade da criança atribuída a carlos bolsonaro e a exposição da família (02:10 - 15:02)">
+                <a class="card-link" href="especiais/2026-07-22-lKD9xIg_VY0.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">A &quot;NETA&quot; MISTERIOSA DE MICHELLE BOLSONARO</span>
+                    <span class="card-topic">Debate sobre a paternidade da criança atribuída a Carlos Bolsonaro e a exposição da família (02:10 - 15:02)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial michellismo: o movimento que quer enterrar o bolsonarismo michelismo, articulações eleitorais e a convenção bolsonarista (01:14 - 13:50)">
+                <a class="card-link" href="especiais/2026-07-29-j-b9fRCwH9U.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">MICHELLISMO: O MOVIMENTO QUE QUER ENTERRAR O BOLSONARISMO</span>
+                    <span class="card-topic">Michelismo, articulações eleitorais e a convenção bolsonarista (01:14 - 13:50)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial você tem que ser indenizado pela pandemia - fauci fala a verdade audiências no senado dos eua, diário atribuído a fauci e pedidos de indenização pela pandemia (00:13 - 12:38)">
+                <a class="card-link" href="especiais/2026-08-03-fF1WWIT-ozs.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">VOCÊ TEM QUE SER INDENIZADO PELA PANDEMIA - FAUCI FALA A VERDADE</span>
+                    <span class="card-topic">Audiências no Senado dos EUA, diário atribuído a Fauci e pedidos de indenização pela pandemia (00:13 - 12:38)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial dr. fauci e os verdadeiros culpados pela pandemia o diário atribuído a fauci e as controvérsias sobre políticas e tratamentos na pandemia (02:47 - 14:35)">
+                <a class="card-link" href="especiais/2026-08-05-G8bfsjs1l8w.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">DR. FAUCI E OS VERDADEIROS CULPADOS PELA PANDEMIA</span>
+                    <span class="card-topic">O diário atribuído a Fauci e as controvérsias sobre políticas e tratamentos na pandemia (02:47 - 14:35)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial a suspeita evolução patrimonial dos políticos brasileiros a evolução patrimonial declarada por políticos e as dúvidas sobre suas fontes de renda (01:28 - 14:20)">
+                <a class="card-link" href="especiais/2026-08-12-C8VIE_VfmFY.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">A SUSPEITA EVOLUÇÃO PATRIMONIAL DOS POLÍTICOS BRASILEIROS</span>
+                    <span class="card-topic">A evolução patrimonial declarada por políticos e as dúvidas sobre suas fontes de renda (01:28 - 14:20)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial bolsonarismo é &quot;direita travequeira&quot;? o uso de “direita travequeira” e a hipocrisia atribuída ao bolsonarismo (01:51 - 14:48)">
+                <a class="card-link" href="especiais/2026-08-19-qUi2SFGjYXQ.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">BOLSONARISMO É &quot;DIREITA TRAVEQUEIRA&quot;?</span>
+                    <span class="card-topic">O uso de “direita travequeira” e a hipocrisia atribuída ao bolsonarismo (01:51 - 14:48)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial lito souza: a doença, o tratamento, as polêmicas e a verdade que escondem de você lito souza, príons e o debate sobre vacinas, tratamento precoce e liberdade individual (01:04 - 13:35)">
+                <a class="card-link" href="especiais/2026-08-26-nK1SI55tjHg.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">LITO SOUZA: A DOENÇA, O TRATAMENTO, AS POLÊMICAS E A VERDADE QUE ESCONDEM DE VOCÊ</span>
+                    <span class="card-topic">Lito Souza, príons e o debate sobre vacinas, tratamento precoce e liberdade individual (01:04 - 13:35)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial mendonça foi pra cima de alexandre de moraes relatos de tensão entre mendonça e moraes e questionamentos sobre investigações (01:54 - 14:56)">
+                <a class="card-link" href="especiais/2026-09-02-xhV-pjwbV3Q.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">MENDONÇA FOI PRA CIMA DE ALEXANDRE DE MORAES</span>
+                    <span class="card-topic">Relatos de tensão entre Mendonça e Moraes e questionamentos sobre investigações (01:54 - 14:56)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial o verdadeiro objetivo de andré mendonça andré mendonça: ambição presidencial, contradições e contraste salarial (01:05 - 13:28)">
+                <a class="card-link" href="especiais/2026-09-09-R9--LjJ-6Ck.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">O VERDADEIRO OBJETIVO DE ANDRÉ MENDONÇA</span>
+                    <span class="card-topic">André Mendonça: ambição presidencial, contradições e contraste salarial (01:05 - 13:28)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial por que o julgamento de alexandre de moraes foi uma vitória para andré mendonça? reunião de processos, reação de andré mendonça e pedido de vista no stf (03:21 - 14:48)">
+                <a class="card-link" href="especiais/2026-09-16-tJ_nu9ubQ0w.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">POR QUE O JULGAMENTO DE ALEXANDRE DE MORAES FOI UMA VITÓRIA PARA ANDRÉ MENDONÇA?</span>
+                    <span class="card-topic">Reunião de processos, reação de André Mendonça e pedido de vista no STF (03:21 - 14:48)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial alexandre de moraes e gilmar mendes vão prender andré mendonça? conflito no stf e possível afastamento de mendonça (01:21 - 15:02)">
+                <a class="card-link" href="especiais/2026-09-23-Bc7qLYrLwVE.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">ALEXANDRE DE MORAES E GILMAR MENDES VÃO PRENDER ANDRÉ MENDONÇA?</span>
+                    <span class="card-topic">Conflito no STF e possível afastamento de Mendonça (01:21 - 15:02)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial como a briga entre dino e mendonça pode fazer flávio ser eleito? postagens sobre nossa senhora aparecida e decisões judiciais envolvendo flávio bolsonaro (01:00 - 11:48)">
+                <a class="card-link" href="especiais/2026-09-30-toZ2zBjXUWY.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">COMO A BRIGA ENTRE DINO E MENDONÇA PODE FAZER FLÁVIO SER ELEITO?</span>
+                    <span class="card-topic">Postagens sobre Nossa Senhora Aparecida e decisões judiciais envolvendo Flávio Bolsonaro (01:00 - 11:48)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial apuração e análise dos resultados ao vivo - wsf especial eleições 2026 festa da democracia, regras do farol e leitura dos primeiros resultados (00:26 - 14:39)">
+                <a class="card-link" href="especiais/2026-10-04-QTbIxibcOE8.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">APURAÇÃO E ANÁLISE DOS RESULTADOS AO VIVO - WSF ESPECIAL ELEIÇÕES 2026</span>
+                    <span class="card-topic">Festa da Democracia, regras do Farol e leitura dos primeiros resultados (00:26 - 14:39)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial flávio bolsonaro eleito! o que acontece agora? crítica ao voto estratégico e às alianças políticas em torno de flávio bolsonaro (03:28 - 15:03)">
+                <a class="card-link" href="especiais/2026-10-07-9AGeXuzXZNM.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">FLÁVIO BOLSONARO ELEITO! O QUE ACONTECE AGORA?</span>
+                    <span class="card-topic">Crítica ao voto estratégico e às alianças políticas em torno de Flávio Bolsonaro (03:28 - 15:03)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial a queda de moraes e o acordo nos bastidores para tentar salvá-lo cerco a xandão, offshore de flávio e articulação por anistia e arquivamento (00:56 - 08:55)">
+                <a class="card-link" href="especiais/2026-10-14-MZVVjtFhgUo.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">A QUEDA DE MORAES E O ACORDO NOS BASTIDORES PARA TENTAR SALVÁ-LO</span>
+                    <span class="card-topic">Cerco a Xandão, offshore de Flávio e articulação por anistia e arquivamento (00:56 - 08:55)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial moraes vai pra cima de flávio, isso pode reeleger lula? medidas eleitorais, inquérito de flávio e cálculo político em torno do stf (00:48 - 13:02)">
+                <a class="card-link" href="especiais/2026-10-21-L5mY5QYfThY.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">MORAES VAI PRA CIMA DE FLÁVIO, ISSO PODE REELEGER LULA?</span>
+                    <span class="card-topic">Medidas eleitorais, inquérito de Flávio e cálculo político em torno do STF (00:48 - 13:02)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial apuração do segundo turno: quem será o novo presidente? ao vivo - wsf especial eleições 2026 segundo turno, urnas e ceticismo: apuração prorrogada, sinais de instabilidade e o mito de sísifo (00:49 - 14:47)">
+                <a class="card-link" href="especiais/2026-10-25-OOW0L-2RbLg.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">APURAÇÃO DO SEGUNDO TURNO: QUEM SERÁ O NOVO PRESIDENTE? AO VIVO - WSF ESPECIAL ELEIÇÕES 2026</span>
+                    <span class="card-topic">Segundo turno, urnas e ceticismo: apuração prorrogada, sinais de instabilidade e o mito de Sísifo (00:49 - 14:47)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial após derrota flávio bolsonaro tem que ir para os eua para não ser preso? derrota eleitoral, mobilização e possíveis consequências políticas (00:30 - 14:39)">
+                <a class="card-link" href="especiais/2026-10-26-0Qj5LSkEDZc.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">APÓS DERROTA FLÁVIO BOLSONARO TEM QUE IR PARA OS EUA PARA NÃO SER PRESO?</span>
+                    <span class="card-topic">Derrota eleitoral, mobilização e possíveis consequências políticas (00:30 - 14:39)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial a fuga de flávio bolsonaro e a &quot;quebra dos mercados&quot; - wsf especial relatos sobre a saída de flávio bolsonaro e o contraste com a experiência de abraão (01:56 - 14:43)">
+                <a class="card-link" href="especiais/2026-10-27-85i-tQyoRik.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">A FUGA DE FLÁVIO BOLSONARO E A &quot;QUEBRA DOS MERCADOS&quot; - WSF ESPECIAL</span>
+                    <span class="card-topic">Relatos sobre a saída de Flávio Bolsonaro e o contraste com a experiência de Abraão (01:56 - 14:43)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+            <li class="summary-card" data-search="especial flávio nos eua! trump entra em cena — e agora, moraes? a viagem de flávio aos estados unidos e as dúvidas levantadas pelo apresentador (01:26 - 14:34)">
+                <a class="card-link" href="especiais/2026-10-28-3sFDWJJqi9A.html">
+                    <span class="card-kicker">Especial</span>
+                    <span class="card-title">FLÁVIO NOS EUA! TRUMP ENTRA EM CENA — E AGORA, MORAES?</span>
+                    <span class="card-topic">A viagem de Flávio aos Estados Unidos e as dúvidas levantadas pelo apresentador (01:26 - 14:34)</span>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+            </nav>
+
+            <p class="empty" id="vazio" hidden>Nenhum resumo encontrado. Tente outro termo.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Resumos do acervo <strong>WSF</strong>, <strong>Raiz Cristã</strong> e <strong>Especiais</strong>.</p>
+        <p>Confira sempre o vídeo original antes de citar ou compartilhar um trecho.</p>
+    </footer>
 </body>
 </html>
