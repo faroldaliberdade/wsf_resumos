@@ -21,6 +21,16 @@ O gerador lê o título, a URL do vídeo e o primeiro tópico de cada página. O
 `<nav id="resumos-novos">` mantém o contrato usado pelo pipeline de resumos:
 novos PRs acrescentam apenas um `<li>` na categoria correspondente.
 
+## Lote histórico de outubro de 2026
+
+O arquivo [`BACKFILL_2026-10.md`](BACKFILL_2026-10.md) concilia os 66 vídeos
+distintos encontrados nos jobs concluídos do pipeline: páginas novas, páginas
+antigas reescritas, página preservada, página bloqueada e vídeos fora do escopo.
+
+Os resumos são **rascunhos automatizados**. Cada ponto tem um link de tempo; a
+revisão humana deve ouvir o trecho, conferir nomes, números e atribuição de falas
+antes do merge. O acervo não faz merge automático de PRs.
+
 ## Endereços antigos
 
 As páginas antes ficavam na raiz (`wsf001.html`, `wsf306_Especial.html`). O
